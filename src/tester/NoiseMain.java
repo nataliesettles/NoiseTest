@@ -5,18 +5,58 @@ import processing.core.*;
 
 import processing.core.PApplet;
 
-/** 
- * Based on code Copyright 2001 Ken Perlin
- * Computes Perlin Noise for one, two, and three dimensions.<p>
- * The result is a continuous function that interpolates a smooth path
- * along a series random points. The function is consitent, so given
- * the same parameters, it will always return the same value.
- * @see ImprovedNoise
-*/
 
-public class NoiseMain extends PApplet{
+public final class NoiseMain extends PApplet{
+
+	// noise "time" variables
+//	float xtime = 0;
+	float x = 1;
+	float ytime = 100;
+	float increment = (float)0.02;
+
+	public void setup() {
+	  size(200,200);
+	  smooth();
+	}
+
+	public void draw() {
+	  background(0);
+//	  float x = noise(xtime)*width;
+	  float y = noise(ytime)*height;
+	  
+	  x += 3;
+	  ytime += increment;
+	  
+	  // draw the ellispe with size determined by Perlin noise
+	  fill(200);
+	  ellipse(x,y,16,16);
+	  
+	  if (x >= width) {
+		  x = 0;
+	  }
+	}
 	
-	
+//	// noise "time" variables
+//	float xtime = 0;
+//	float ytime = 100;
+//	float increment = (float)0.02;
+//
+//	public void setup() {
+//	  size(200,200);
+//	  smooth();
+//	}
+//
+//	public void draw() {
+//	  background(0);
+//	  float x = noise(xtime)*width;
+//	  float y = noise(ytime)*height;
+//	  
+//	  xtime += increment;
+//	  ytime += increment;
+//	  
+//	  // draw the ellispe with size determined by Perlin noise
+//	  fill(200);
+//	  ellipse(x,y,16,16);
 	
 	
 	/**
